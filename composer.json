@@ -1,0 +1,8 @@
+{
+    "name": "sergio-vilchis/laravel-phpjasperxml",
+    "autoload": {
+        "psr-0" : {
+            "Sergio\\PhpJasperXML" : "src"
+        }
+    }
+}
