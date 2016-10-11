@@ -1,7 +1,14 @@
 {
     "name": "sergio-vilchis/laravel-phpjasperxml",
+    "description": "Laravel package to render JasperReports",
+    "authors":[
+      {
+        "name": "Sergio Vilchis",
+        "email": "s.vilchisq@gmail.com"
+      }
+    ],
     "autoload": {
-        "psr-0" : {
+        "psr-4" : {
             "Sergio\\PhpJasperXML" : "src"
         }
     }
