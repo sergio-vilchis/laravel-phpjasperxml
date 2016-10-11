@@ -15,7 +15,7 @@ class JasperReportsServiceProvider extends ServiceProvider
     public function register()
     {
       $this->app->singleton('Sergio\PhpJasperXML\PHPJasperXML', function ($app) {
-          return new PhpJasperXML();
+          return new PHPJasperXML();
       });
       $this->app->singleton('Sergio\PhpJasperXML\Response', function ($app) {
           return new Response();

@@ -1,5 +1,5 @@
 <?php
-
+namespace Sergio\PhpJasperXML;
 //version 0.9d
 class PHPJasperXML {
     private $adjust=1.2;
