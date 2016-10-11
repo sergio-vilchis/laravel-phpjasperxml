@@ -1,5 +1,6 @@
 <?php
 namespace Sergio\PhpJasperXML;
+include_once('src/tcpdf/tcpdf.php');
 //version 0.9d
 class PHPJasperXML {
     private $adjust=1.2;
