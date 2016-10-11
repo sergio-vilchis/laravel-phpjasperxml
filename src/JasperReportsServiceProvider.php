@@ -6,16 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class JasperReportsServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
+     protected $defer = true;
     /**
      * Register the application services.
      *
@@ -24,10 +15,10 @@ class JasperReportsServiceProvider extends ServiceProvider
     public function register()
     {
       $this->app->singleton('Sergio\PhpJasperXML\PHPJasperXML', function ($app) {
-          return new PhpJasperXML($app['url']);
+          return new PhpJasperXML();
       });
       $this->app->singleton('Sergio\PhpJasperXML\Response', function ($app) {
-          return new Response($app['url']);
+          return new Response();
       });
     }
 
