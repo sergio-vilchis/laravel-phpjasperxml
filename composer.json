@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4" : {
-            "Sergio\\PhpJasperXML" : "src/"
+            "Sergio\\PhpJasperXML\\" : "src/"
         }
     }
 }
