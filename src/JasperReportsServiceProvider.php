@@ -3,7 +3,8 @@
 namespace Sergio\PhpJasperXML;
 
 use Illuminate\Support\ServiceProvider;
-
+include_once(app_path()."/includes/class/tcpdf/.php");
+include_once(app_path()."/includes/class/PHPJasperXML.php");
 class JasperReportsServiceProvider extends ServiceProvider
 {
      protected $defer = true;
