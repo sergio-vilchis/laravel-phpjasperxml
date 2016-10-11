@@ -30,7 +30,7 @@ class PHPJasperXML {
 	private $report_count=0;		//### New declaration (variable exists in original too)
 	private $group_count = array(); //### New declaration
         public $generatestatus=false;
-    public function PHPJasperXML($lang="english",$pdflib="TCPDF") {
+    public function __construct($lang="english",$pdflib="TCPDF") {
         $this->lang=$lang;
        $this->setErrorReport(0);
 
