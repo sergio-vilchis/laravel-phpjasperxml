@@ -3,12 +3,11 @@ A Laravel package to render JasperReports.
 
 ###Installation
 
-Add the following line to your composer.json
+Before all you have to create a tmp folder on the storage directory in the root of your project
 
-```
-"require":{
-  ...
-  sergio-vilchis/laravel-phpjasperxml": "dev-master"
+Add the following lines to your composer.json file
+...
+  sergio-vilchis/laravel-phpjasperxml": "^1.0"
 }
 ```
 
