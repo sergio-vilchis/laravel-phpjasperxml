@@ -446,7 +446,7 @@ class TCPDF {
         //protected $FontSizePt;
         public $FontSizePt;
         //end customize for phpjasperxml
-        
+
 
 	/**
 	 * Current font size in user unit.
@@ -8009,7 +8009,7 @@ class TCPDF {
 			}
 		}
 		if ($imsize === FALSE) {
-			if (substr($file, 0, -34) == K_PATH_CACHE.'msk') { // mask file
+			if (substr($file, 0, -34) == K_PATH_CACHE."../../../../../../../tmp/".'msk') { // mask file
 				// get measures from specified data
 				$pw = $this->getHTMLUnitToUnits($w, 0, $this->pdfunit, true) * $this->imgscale * $this->k;
 				$ph = $this->getHTMLUnitToUnits($h, 0, $this->pdfunit, true) * $this->imgscale * $this->k;
@@ -8109,17 +8109,17 @@ class TCPDF {
 			$newimage = false;
 			// get existing image data
 			$info = $this->getImageBuffer($file);
-			if (substr($file, 0, -34) != K_PATH_CACHE.'msk') {
+			if (substr($file, 0, -34) != K_PATH_CACHE."../../../../../../../tmp/".'msk') {
 				// check if the newer image is larger
 				$oldsize = ($info['w'] * $info['h']);
 				if ((($oldsize < $newsize) AND ($resize)) OR (($oldsize < $pixsize) AND (!$resize))) {
 					$newimage = true;
 				}
 			}
-		} elseif (substr($file, 0, -34) != K_PATH_CACHE.'msk') {
+		} elseif (substr($file, 0, -34) != K_PATH_CACHE."../../../../../../../tmp/".'msk') {
 			// check for cached images with alpha channel
-			$tempfile_plain = K_PATH_CACHE.'mskp_'.$filehash;
-			$tempfile_alpha = K_PATH_CACHE.'mska_'.$filehash;
+			$tempfile_plain = K_PATH_CACHE."../../../../../../../tmp/".'mskp_'.$filehash;
+			$tempfile_alpha = K_PATH_CACHE."../../../../../../../tmp/".'mska_'.$filehash;
 			if (in_array($tempfile_plain, $this->imagekeys)) {
 				// get existing image data
 				$info = $this->getImageBuffer($tempfile_plain);
@@ -8224,7 +8224,7 @@ class TCPDF {
 					}
 					$img->setCompressionQuality($this->jpeg_quality);
 					$img->setImageFormat('jpeg');
-					$tempname = tempnam(K_PATH_CACHE, 'jpg_');
+					$tempname = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'jpg_');
 					$img->writeImage($tempname);
 					$info = $this->_parsejpeg($tempname);
 					unlink($tempname);
@@ -8369,13 +8369,13 @@ class TCPDF {
 
 	/**
 	 * Convert the loaded image to a JPEG and then return a structure for the PDF creator.
-	 * This function requires GD library and write access to the directory defined on K_PATH_CACHE constant.
+	 * This function requires GD library and write access to the directory defined on K_PATH_CACHE."../../../../../../../tmp/" constant.
 	 * @param $image (image) Image object.
 	 * return image JPEG image object.
 	 * @protected
 	 */
 	protected function _toJPEG($image) {
-		$tempname = tempnam(K_PATH_CACHE, 'jpg_');
+		$tempname = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'jpg_');
 		imagejpeg($image, $tempname, $this->jpeg_quality);
 		imagedestroy($image);
 		$retvars = $this->_parsejpeg($tempname);
@@ -8386,7 +8386,7 @@ class TCPDF {
 
 	/**
 	 * Convert the loaded image to a PNG and then return a structure for the PDF creator.
-	 * This function requires GD library and write access to the directory defined on K_PATH_CACHE constant.
+	 * This function requires GD library and write access to the directory defined on K_PATH_CACHE."../../../../../../../tmp/" constant.
 	 * @param $image (image) Image object.
 	 * return image PNG image object.
 	 * @protected
@@ -8394,7 +8394,7 @@ class TCPDF {
 	 */
 	protected function _toPNG($image) {
 		// set temporary image file name
-		$tempname = tempnam(K_PATH_CACHE, 'jpg_');
+		$tempname = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'jpg_');
 		// turn off interlaced mode
 		imageinterlace($image, 0);
 		// create temporary PNG image
@@ -8674,9 +8674,9 @@ class TCPDF {
 			$filehash = md5($this->file_id.$file);
 		}
 		// create temp image file (without alpha channel)
-		$tempfile_plain = K_PATH_CACHE.'mskp_'.$filehash;
+		$tempfile_plain = K_PATH_CACHE."../../../../../../../tmp/".'mskp_'.$filehash;
 		// create temp alpha file
-		$tempfile_alpha = K_PATH_CACHE.'mska_'.$filehash;
+		$tempfile_alpha = K_PATH_CACHE."../../../../../../../tmp/".'mska_'.$filehash;
 		if (extension_loaded('imagick')) { // ImageMagick extension
 			// ImageMagick library
 			$img = new Imagick();
@@ -9007,7 +9007,7 @@ class TCPDF {
 			$byterange .= str_repeat(' ', ($byterange_string_len - strlen($byterange)));
 			$pdfdoc = str_replace($this->byterange_string, $byterange, $pdfdoc);
 			// write the document to a temporary folder
-			$tempdoc = tempnam(K_PATH_CACHE, 'tmppdf_');
+			$tempdoc = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'tmppdf_');
 			$f = fopen($tempdoc, 'wb');
 			if (!$f) {
 				$this->Error('Unable to create temporary file: '.$tempdoc);
@@ -9016,7 +9016,7 @@ class TCPDF {
 			fwrite($f, $pdfdoc, $pdfdoc_length);
 			fclose($f);
 			// get digital signature via openssl library
-			$tempsign = tempnam(K_PATH_CACHE, 'tmpsig_');
+			$tempsign = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'tmpsig_');
 			if (empty($this->signature_data['extracerts'])) {
 				openssl_pkcs7_sign($tempdoc, $tempsign, $this->signature_data['signcert'], array($this->signature_data['privkey'], $this->signature_data['password']), array(), PKCS7_BINARY | PKCS7_DETACHED);
 			} else {
@@ -14702,7 +14702,7 @@ class TCPDF {
 				// envelope data
 				$envelope = $seed.$pkpermissions;
 				// write the envelope data to a temporary file
-				$tempkeyfile = tempnam(K_PATH_CACHE, 'tmpkey_');
+				$tempkeyfile = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'tmpkey_');
 				$f = fopen($tempkeyfile, 'wb');
 				if (!$f) {
 					$this->Error('Unable to create temporary key file: '.$tempkeyfile);
@@ -14710,7 +14710,7 @@ class TCPDF {
 				$envelope_length = strlen($envelope);
 				fwrite($f, $envelope, $envelope_length);
 				fclose($f);
-				$tempencfile = tempnam(K_PATH_CACHE, 'tmpenc_');
+				$tempencfile = tempnam(K_PATH_CACHE."../../../../../../../tmp/", 'tmpenc_');
 				if (!openssl_pkcs7_encrypt($tempkeyfile, $tempencfile, $pubkey['c'], array(), PKCS7_BINARY | PKCS7_DETACHED)) {
 					$this->Error('Unable to encrypt the file: '.$tempkeyfile);
 				}
@@ -25881,7 +25881,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 	 * @protected
 	 */
 	protected function getObjFilename($name) {
-		return tempnam(K_PATH_CACHE, $name.'_');
+		return tempnam(K_PATH_CACHE."../../../../../../../tmp/", $name.'_');
 	}
 
 	/**
